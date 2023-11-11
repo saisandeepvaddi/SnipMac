@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */; };
 		44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE832AFA03130099CE70 /* SnipMacApp.swift */; };
 		44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE852AFA03130099CE70 /* ContentView.swift */; };
 		44F5CE882AFA03140099CE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F5CE872AFA03140099CE70 /* Assets.xcassets */; };
@@ -14,12 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureManager.swift; sourceTree = "<group>"; };
 		44F5CE802AFA03130099CE70 /* SnipMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnipMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F5CE832AFA03130099CE70 /* SnipMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnipMacApp.swift; sourceTree = "<group>"; };
 		44F5CE852AFA03130099CE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44F5CE872AFA03140099CE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44F5CE892AFA03140099CE70 /* SnipMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnipMac.entitlements; sourceTree = "<group>"; };
 		44F5CE8B2AFA03140099CE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		44F5CE942AFA11410099CE70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +55,13 @@
 		44F5CE822AFA03130099CE70 /* SnipMac */ = {
 			isa = PBXGroup;
 			children = (
+				44F5CE942AFA11410099CE70 /* Info.plist */,
 				44F5CE832AFA03130099CE70 /* SnipMacApp.swift */,
 				44F5CE852AFA03130099CE70 /* ContentView.swift */,
 				44F5CE872AFA03140099CE70 /* Assets.xcassets */,
 				44F5CE892AFA03140099CE70 /* SnipMac.entitlements */,
 				44F5CE8A2AFA03140099CE70 /* Preview Content */,
+				4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */,
 			);
 			path = SnipMac;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */,
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
 				44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */,
 			);
@@ -274,6 +280,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SnipMac/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -287,15 +296,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saisandeepvaddi.SnipMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -312,6 +321,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SnipMac/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -325,15 +337,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saisandeepvaddi.SnipMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
