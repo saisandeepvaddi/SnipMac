@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "70FC2BDE-5ACC-4964-BD7E-DF9789E0ACB7"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E9DEB553-5E63-4453-9EF9-B8FB12AD91F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenCaptureManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "checkScreenCapturePermission(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E9DEB553-5E63-4453-9EF9-B8FB12AD91F5 - b7da2816dd2232a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenCaptureManager.captureScreen() -&gt; Swift.Optional&lt;__C.NSImage&gt;"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "812">
+               </Location>
+               <Location
+                  uuid = "E9DEB553-5E63-4453-9EF9-B8FB12AD91F5 - b7da2816dd2232a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenCaptureManager.captureScreen() -&gt; Swift.Optional&lt;__C.NSImage&gt;"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "792">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1219C7A5-2729-46BA-B3BD-2907B7CC338E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenCaptureManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "takeScreenshot()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDC8A004-3054-472E-A46F-73ABBE4D4BE3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenCaptureManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "checkScreenCapturePermission(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DDC8A004-3054-472E-A46F-73ABBE4D4BE3 - 5ee8c34751f28fa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SnipMac.ScreenCaptureManager.checkScreenCapturePermission(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "492">
+               </Location>
+               <Location
+                  uuid = "DDC8A004-3054-472E-A46F-73ABBE4D4BE3 - 5ee8c34751f28fa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static SnipMac.ScreenCaptureManager.checkScreenCapturePermission(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "464">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDF52108-D69B-4DB1-BD3D-FF3E2AF4B441"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenCaptureManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "takeScreenshot()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BDF52108-D69B-4DB1-BD3D-FF3E2AF4B441 - e70f182fbcc5a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in static SnipMac.ScreenCaptureManager.takeScreenshot() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "440">
+               </Location>
+               <Location
+                  uuid = "BDF52108-D69B-4DB1-BD3D-FF3E2AF4B441 - e70f182fbcc5a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in static SnipMac.ScreenCaptureManager.takeScreenshot() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "BDF52108-D69B-4DB1-BD3D-FF3E2AF4B441 - e70f182fbcc5a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in static SnipMac.ScreenCaptureManager.takeScreenshot() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenCaptureManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

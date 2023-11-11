@@ -7,6 +7,7 @@
 
 import AppKit
 import Foundation
+import UniformTypeIdentifiers
 
 class ScreenCaptureManager {
     static func takeScreenshot() {
@@ -26,15 +27,6 @@ class ScreenCaptureManager {
                 return
             }
 
-//            let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-//            let screenshotURL = desktopURL.appendingPathComponent("SnipMacScreenShot.png")
-//
-//            do {
-//                try data.write(to: screenshotURL)
-//                print("Screenshot saved to: \(screenshotURL)")
-//            } catch {
-//                print("Failed to save screenshot: \(error)")
-//            }
             saveScreenShot(data: data)
         }
     }
@@ -53,7 +45,7 @@ class ScreenCaptureManager {
 
     static func saveScreenShot(data: Data) {
         let savePanel = NSSavePanel()
-        savePanel.allowedFileTypes = ["png"]
+        savePanel.allowedContentTypes = [UTType.png, UTType.jpeg, UTType.webP]
         savePanel.nameFieldStringValue = "SnipMacScreenShot.png"
         savePanel.begin { result in
             if result == .OK, let url = savePanel.url {
