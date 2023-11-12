@@ -7,33 +7,10 @@ struct OverlayView: View {
         GeometryReader { geometry in
             Group {
                 if isSelecting {
-//                    // Top rectangle
-//                    Rectangle()
-//                        .fill(Color.black.opacity(0.5))
-//                        .frame(width: geometry.size.width, height: selectedRect.minY)
-//
-//                    // Bottom rectangle
-//                    Rectangle()
-//                        .fill(Color.black.opacity(0.5))
-//                        .frame(width: geometry.size.width, height: geometry.size.height - selectedRect.maxY)
-//                        .offset(y: selectedRect.maxY)
-//
-//                    // Left rectangle
-//                    Rectangle()
-//                        .fill(Color.black.opacity(0.5))
-//                        .frame(width: selectedRect.minX, height: selectedRect.height)
-//                        .offset(y: selectedRect.minY)
-//
-//                    // Right rectangle
-//                    Rectangle()
-//                        .fill(Color.black.opacity(0.5))
-//                        .frame(width: geometry.size.width - selectedRect.maxX, height: selectedRect.height)
-//                        .offset(x: selectedRect.maxX, y: selectedRect.minY)
-
                     // Blue border for the selected area
                     Rectangle()
                         .stroke(Color.white, lineWidth: 2)
-                        .background(Color.black.opacity(0.8))
+                        .background(Color.black.opacity(0.2))
                         .frame(width: selectedRect.width, height: selectedRect.height)
                         .offset(x: selectedRect.minX,
                                 y: selectedRect.minY)
@@ -57,13 +34,14 @@ struct OverlayView: View {
                                                   height: abs(adjustedLocation.y - adjustedStartLocation.y))
 
                                 selectedRect = CGRect(origin: origin, size: size)
-                                print(selectedRect)
                                 isSelecting = true
                             }
                             .onEnded { _ in
                                 isSelecting = false
                                 AppDelegate.shared?.hideOverlayWindow()
-                                ScreenCaptureManager.takeScreenshot(of: selectedRect)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    ScreenCaptureManager.takeScreenshot(of: selectedRect)
+                                }
                             }
                     )
             }
