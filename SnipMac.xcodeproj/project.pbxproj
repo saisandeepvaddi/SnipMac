@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */; };
+		4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* OverlayView.swift */; };
+		449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449444762AFF4F9D0047DA0E /* AppDelegate.swift */; };
 		44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE832AFA03130099CE70 /* SnipMacApp.swift */; };
 		44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE852AFA03130099CE70 /* ContentView.swift */; };
 		44F5CE882AFA03140099CE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F5CE872AFA03140099CE70 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureManager.swift; sourceTree = "<group>"; };
+		4410A26A2AFF3DD800F1E606 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		449444762AFF4F9D0047DA0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44F5CE802AFA03130099CE70 /* SnipMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnipMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F5CE832AFA03130099CE70 /* SnipMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnipMacApp.swift; sourceTree = "<group>"; };
 		44F5CE852AFA03130099CE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				44F5CE892AFA03140099CE70 /* SnipMac.entitlements */,
 				44F5CE8A2AFA03140099CE70 /* Preview Content */,
 				4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */,
+				4410A26A2AFF3DD800F1E606 /* OverlayView.swift */,
+				449444762AFF4F9D0047DA0E /* AppDelegate.swift */,
 			);
 			path = SnipMac;
 			sourceTree = "<group>";
@@ -145,7 +151,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */,
+				4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */,
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
+				449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */,
 				44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

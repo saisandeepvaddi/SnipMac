@@ -10,12 +10,11 @@ import Foundation
 import UniformTypeIdentifiers
 
 class ScreenCaptureManager {
-    static func takeScreenshot() {
+    static func takeScreenshot(of area: CGRect? = nil) {
         checkScreenCapturePermission {
-            let displayID = CGMainDisplayID()
-            let screenFrame = CGDisplayBounds(displayID)
+            let captureRect = area ?? CGDisplayBounds(CGMainDisplayID())
 
-            guard let imageRef = CGWindowListCreateImage(screenFrame, .optionOnScreenOnly, kCGNullWindowID, .bestResolution) else {
+            guard let imageRef = CGWindowListCreateImage(captureRect, .optionOnScreenOnly, kCGNullWindowID, .bestResolution) else {
                 print("Unable to capture the screen")
                 return
             }
@@ -58,4 +57,8 @@ class ScreenCaptureManager {
             }
         }
     }
+
+    static func listWindows() {}
+
+    static func captureWindow(windowID: CGWindowID) {}
 }
