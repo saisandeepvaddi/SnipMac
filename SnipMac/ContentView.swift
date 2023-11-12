@@ -9,17 +9,21 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedRect: CGRect = .zero
-    @State private var isSelecting: Bool = false
-
     var body: some View {
         VStack {
             Button("Take Screenshot") {
-                self.isSelecting = false
-                ScreenCaptureManager.takeScreenshot()
+                withMainWindowClosed {
+                    ScreenCaptureManager.takeScreenshot()
+                }
+//                AppDelegate.shared?.hideMainWindow()
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                    ScreenCaptureManager.takeScreenshot()
+//                    AppDelegate.shared?.showMainWindow()
+//                }
             }
 
             Button("Capture Area") {
+                AppDelegate.shared?.hideMainWindow()
                 AppDelegate.shared?.showOverlayWindow()
             }
 

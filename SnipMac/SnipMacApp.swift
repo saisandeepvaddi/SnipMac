@@ -14,6 +14,9 @@ struct SnipMacApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    appDelegate.mainWindow = NSApplication.shared.windows.first
+                }
         }
     }
 }

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+func withMainWindowClosed(_ action: @escaping () -> Void) {
+    AppDelegate.shared?.hideMainWindow()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        action()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            AppDelegate.shared?.showMainWindow()
+        }
+    }
+}

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */; };
 		4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* OverlayView.swift */; };
+		44579A8B2B008287001EE3D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44579A8A2B008287001EE3D0 /* Utils.swift */; };
 		449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449444762AFF4F9D0047DA0E /* AppDelegate.swift */; };
 		44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE832AFA03130099CE70 /* SnipMacApp.swift */; };
 		44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE852AFA03130099CE70 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureManager.swift; sourceTree = "<group>"; };
 		4410A26A2AFF3DD800F1E606 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		44579A8A2B008287001EE3D0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		449444762AFF4F9D0047DA0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44F5CE802AFA03130099CE70 /* SnipMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnipMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F5CE832AFA03130099CE70 /* SnipMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnipMacApp.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */,
 				4410A26A2AFF3DD800F1E606 /* OverlayView.swift */,
 				449444762AFF4F9D0047DA0E /* AppDelegate.swift */,
+				44579A8A2B008287001EE3D0 /* Utils.swift */,
 			);
 			path = SnipMac;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
 				449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */,
 				44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */,
+				44579A8B2B008287001EE3D0 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,8 +38,10 @@ struct OverlayView: View {
                             }
                             .onEnded { _ in
                                 isSelecting = false
+
                                 AppDelegate.shared?.hideOverlayWindow()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+
+                                withMainWindowClosed {
                                     ScreenCaptureManager.takeScreenshot(of: selectedRect)
                                 }
                             }

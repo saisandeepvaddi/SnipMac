@@ -12,6 +12,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate?
     var overlayWindow: NSWindow?
+    var mainWindow: NSWindow?
 
     override init() {
         super.init()
@@ -31,6 +32,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func hideOverlayWindow() {
         overlayWindow?.orderOut(nil)
+    }
+
+    func hideMainWindow() {
+        mainWindow?.orderOut(nil)
+    }
+
+    func showMainWindow() {
+        mainWindow?.makeKeyAndOrderFront(nil)
     }
 
     private func createOverlayWindow() {
