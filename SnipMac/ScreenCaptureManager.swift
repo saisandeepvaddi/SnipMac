@@ -63,10 +63,10 @@ class ScreenCaptureManager {
 
     static func saveScreenshot(data: Data) {
         let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-
-        let dateStr = Date().formatted(date: .abbreviated, time: .standard).utf8
-        let filename = "SnipMacScreenShot \(dateStr).png"
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
+        let timestamp = dateFormatter.string(from: Date())
+        let filename = "SnipMacScreenRecording \(timestamp).mp4"
         let fileURL = desktopURL.appendingPathComponent(filename)
         do {
             try data.write(to: fileURL, options: .atomic)

@@ -14,15 +14,21 @@ class ScreenRecorder: NSObject, AVCaptureFileOutputRecordingDelegate {
     private var destinationURL: URL
 
     override init() {
-        captureSession = AVCaptureSession()
-        movieOutput = AVCaptureMovieFileOutput()
-
         let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
         let timestamp = dateFormatter.string(from: Date())
-        destinationURL = desktopURL.appendingPathComponent("SnipMacScreenRecording \(timestamp).mp4")
+        let filename = "SnipMacScreenRecording \(timestamp).mp4"
+        destinationURL = desktopURL.appendingPathComponent(filename)
         super.init()
+        setupCaptureSession()
+    }
+
+    func setupCaptureSession() {
+        captureSession = AVCaptureSession()
+        captureSession?.sessionPreset = .high
+
+        movieOutput = AVCaptureMovieFileOutput()
     }
 
     func startRecordingMainScreen() {
