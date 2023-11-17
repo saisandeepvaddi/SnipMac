@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
+    let screenRecorder = ScreenRecorder()
     var body: some View {
         VStack {
             Button("Take Screenshot") {
@@ -27,7 +28,26 @@ struct ContentView: View {
                 AppDelegate.shared?.showOverlayWindow()
             }
 
-            Button("Start Recording") {}
+            Button("Start Recording") {
+//                withMainWindowClosed {
+                screenRecorder.startRecordingMainScreen()
+//                }
+//                // Hide the main window before starting the recording
+//                AppDelegate.shared?.hideMainWindow()
+//
+//                // Start screen recording
+//
+//
+//                // Optionally, after a delay, show the main window again
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                    AppDelegate.shared?.showMainWindow()
+//                }
+            }
+
+            Button("Stop Recording") {
+                // Stop screen recording
+                screenRecorder.stopRecording()
+            }
         }
     }
 }
