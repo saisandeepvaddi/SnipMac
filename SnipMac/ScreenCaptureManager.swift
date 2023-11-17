@@ -26,7 +26,7 @@ class ScreenCaptureManager {
                 return
             }
 
-            saveScreenShot(data: data)
+            saveScreenshot(data: data)
         }
     }
 
@@ -42,10 +42,13 @@ class ScreenCaptureManager {
         }
     }
 
-    static func saveScreenShot(data: Data) {
+    static func saveScreenShotWithSavePanel(data: Data) {
         let savePanel = NSSavePanel()
+
         savePanel.allowedContentTypes = [UTType.png, UTType.jpeg, UTType.webP]
-        savePanel.nameFieldStringValue = "SnipMacScreenShot.png"
+
+        let dateStr = Date().formatted(date: .abbreviated, time: .standard)
+        savePanel.nameFieldStringValue = "SnipMacScreenShot \(dateStr).png"
         savePanel.begin { result in
             if result == .OK, let url = savePanel.url {
                 do {
@@ -55,6 +58,21 @@ class ScreenCaptureManager {
                     print("Failed to save screenshot: \(error)")
                 }
             }
+        }
+    }
+
+    static func saveScreenshot(data: Data) {
+        let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+
+        let dateStr = Date().formatted(date: .abbreviated, time: .standard).utf8
+        let filename = "SnipMacScreenShot \(dateStr).png"
+
+        let fileURL = desktopURL.appendingPathComponent(filename)
+        do {
+            try data.write(to: fileURL, options: .atomic)
+            print("Screenshot saved to: \(fileURL.path())")
+        } catch {
+            print("Failed to save screenshot: \(error)")
         }
     }
 
