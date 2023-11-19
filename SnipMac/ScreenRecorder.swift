@@ -9,10 +9,11 @@ import AVFoundation
 import Foundation
 
 class ScreenRecorder: NSObject {
+    static let shared = ScreenRecorder()
     private var captureSession: AVCaptureSession?
     private var movieOutput: AVCaptureMovieFileOutput?
     private var destinationURL: URL
-
+    let overlayWindowManager = OverlayWindowManager.shared
     override init() {
         let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
         let dateFormatter = DateFormatter()
@@ -64,8 +65,8 @@ class ScreenRecorder: NSObject {
         movieOutput?.stopRecording()
         captureSession?.stopRunning()
         print("Stopping recording")
-        if (AppDelegate.shared?.overlayWindow) != nil {
-            AppDelegate.shared?.hideOverlayWindow()
+        if (overlayWindowManager.overlayWindow) != nil {
+            overlayWindowManager.hideOverlayWindow()
         }
     }
 }

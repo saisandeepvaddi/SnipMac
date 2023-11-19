@@ -1,33 +1,29 @@
 //
-//  AppDelegate.swift
+//  OverlayWindowManager.swift
 //  SnipMac
 //
-//  Created by Sai Sandeep Vaddi on 11/10/23.
+//  Created by Sai Sandeep Vaddi on 11/18/23.
 //
-
 import AppKit
-import Cocoa
-import Combine
 import SwiftUI
 
-class AppDelegate: NSObject, NSApplicationDelegate {
-    static var shared: AppDelegate?
-
+class OverlayWindowManager {
+    static let shared = OverlayWindowManager()
     var overlayWindow: NSWindow?
     var mainWindow: NSWindow?
+    private var appState: AppState?
 
-    override init() {
-        super.init()
-        AppDelegate.shared = self
+    // Accept AppState as a parameter
+    func setAppState(_ appState: AppState) {
+        self.appState = appState
+        observeAppStateChanges()
     }
 
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        print("AppDelegate is initialized.")
-    }
+    private func observeAppStateChanges() {}
 
-    func showOverlayWindow(captureType: CaptureType, screenRecorder: ScreenRecorder? = nil) {
+    func showOverlayWindow(captureType: CaptureType) {
         if overlayWindow == nil {
-            createOverlayWindow(captureType: captureType, screenRecorder: screenRecorder)
+            createOverlayWindow(captureType: captureType)
         }
         overlayWindow?.makeKeyAndOrderFront(nil)
     }
@@ -44,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindow?.makeKeyAndOrderFront(nil)
     }
 
-    private func createOverlayWindow(captureType: CaptureType, screenRecorder: ScreenRecorder? = nil) {
+    private func createOverlayWindow(captureType: CaptureType) {
         let screenRect = NSScreen.main?.frame ?? NSRect(x: 0, y: 0, width: 0, height: 0)
         overlayWindow = NSWindow(
             contentRect: screenRect,
@@ -55,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         overlayWindow?.level = .screenSaver
         overlayWindow?.ignoresMouseEvents = false
 
-        let contentView = ScreenshotOverlayView(captureType: captureType, screenRecorder: screenRecorder ?? ScreenRecorder(), appState: appState ?? AppState())
+        let contentView = ScreenshotOverlayView(captureType: captureType)
         overlayWindow?.contentView = NSHostingView(rootView: contentView)
     }
 }

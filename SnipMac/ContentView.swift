@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    let screenRecorder = ScreenRecorder()
+    let screenRecorder = ScreenRecorder.shared
+    let overlayWindowManager = OverlayWindowManager.shared
     var body: some View {
         VStack {
             Button("Take Screenshot") {
@@ -19,8 +20,8 @@ struct ContentView: View {
             }
 
             Button("Capture Area") {
-                AppDelegate.shared?.hideMainWindow()
-                AppDelegate.shared?.showOverlayWindow(captureType: .screenshot)
+                overlayWindowManager.hideMainWindow()
+                overlayWindowManager.showOverlayWindow(captureType: .screenshot)
             }
 
             Button("Start Recording whole screen") {
@@ -28,7 +29,7 @@ struct ContentView: View {
             }
 
             Button("Start Recording area") {
-                AppDelegate.shared?.showOverlayWindow(captureType: .screenRecord, screenRecorder: screenRecorder)
+                overlayWindowManager.showOverlayWindow(captureType: .screenRecord)
             }
 
             Button("Stop Recording") {

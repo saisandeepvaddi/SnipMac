@@ -66,7 +66,7 @@ class ScreenCaptureManager {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
         let timestamp = dateFormatter.string(from: Date())
-        let filename = "SnipMacScreenRecording \(timestamp).mp4"
+        let filename = "SnipMacScreenRecording \(timestamp).png"
         let fileURL = desktopURL.appendingPathComponent(filename)
         do {
             try data.write(to: fileURL, options: .atomic)

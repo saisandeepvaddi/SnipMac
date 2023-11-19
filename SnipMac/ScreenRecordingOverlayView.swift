@@ -5,7 +5,7 @@ struct ScreenRecordingOverlayView: View {
     @State private var isSelecting = false
     var captureType: CaptureType = .screenshot
     var screenRecorder: ScreenRecorder = .init()
-
+    let overlayWindowManager = OverlayWindowManager.shared
     var drag: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { value in
@@ -25,13 +25,13 @@ struct ScreenRecordingOverlayView: View {
             .onEnded { _ in
                 if captureType == .screenshot {
                     isSelecting = false
-                    AppDelegate.shared?.hideOverlayWindow()
+                    overlayWindowManager.hideOverlayWindow()
                     withMainWindowClosed {
                         ScreenCaptureManager.takeScreenshot(of: selectedRect)
                     }
                 } else {
                     isSelecting = false
-                    AppDelegate.shared?.hideOverlayWindow()
+                    overlayWindowManager.hideOverlayWindow()
                     screenRecorder.startRecording(of: selectedRect)
                 }
             }

@@ -8,6 +8,6 @@
 import Foundation
 
 class AppState: ObservableObject {
-    @Published var isCreatingOverlay = false
+    @Published var showOverlay = false
     @Published var recorder: ScreenRecorder = .init()
 }
