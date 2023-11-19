@@ -8,7 +8,7 @@
 import AVFoundation
 import Foundation
 
-class ScreenRecorder: NSObject, AVCaptureFileOutputRecordingDelegate {
+class ScreenRecorder: NSObject {
     private var captureSession: AVCaptureSession?
     private var movieOutput: AVCaptureMovieFileOutput?
     private var destinationURL: URL
@@ -32,16 +32,22 @@ class ScreenRecorder: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
 
     func startRecordingMainScreen() {
+        startRecording(of: CGDisplayBounds(CGMainDisplayID()))
+    }
+
+    func startRecording(of area: CGRect?) {
         guard let captureSession = captureSession, let movieOutput = movieOutput else { return }
 
         if let mainDisplayId = CGMainDisplayID() as? CGDirectDisplayID,
            let input = AVCaptureScreenInput(displayID: mainDisplayId)
         {
+            if area != nil {
+                input.cropRect = area ?? CGDisplayBounds(CGMainDisplayID())
+            }
             if captureSession.canAddInput(input) {
                 captureSession.addInput(input)
             }
         }
-
         // Add the movie file output
         if captureSession.canAddOutput(movieOutput) {
             captureSession.addOutput(movieOutput)
@@ -57,6 +63,19 @@ class ScreenRecorder: NSObject, AVCaptureFileOutputRecordingDelegate {
     func stopRecording() {
         movieOutput?.stopRecording()
         captureSession?.stopRunning()
+        print("Stopping recording")
+        if (AppDelegate.shared?.overlayWindow) != nil {
+            AppDelegate.shared?.hideOverlayWindow()
+        }
+    }
+}
+
+extension ScreenRecorder: AVCaptureFileOutputRecordingDelegate {
+    func fileOutput(_ output: AVCaptureFileOutput,
+                    didStartRecordingTo fileURL: URL,
+                    from connections: [AVCaptureConnection])
+    {
+        print("Recording started")
     }
 
     func fileOutput(_ output: AVCaptureFileOutput,

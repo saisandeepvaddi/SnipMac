@@ -16,32 +16,19 @@ struct ContentView: View {
                 withMainWindowClosed {
                     ScreenCaptureManager.takeScreenshot()
                 }
-//                AppDelegate.shared?.hideMainWindow()
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                    ScreenCaptureManager.takeScreenshot()
-//                    AppDelegate.shared?.showMainWindow()
-//                }
             }
 
             Button("Capture Area") {
                 AppDelegate.shared?.hideMainWindow()
-                AppDelegate.shared?.showOverlayWindow()
+                AppDelegate.shared?.showOverlayWindow(captureType: .screenshot)
             }
 
-            Button("Start Recording") {
-//                withMainWindowClosed {
+            Button("Start Recording whole screen") {
                 screenRecorder.startRecordingMainScreen()
-//                }
-//                // Hide the main window before starting the recording
-//                AppDelegate.shared?.hideMainWindow()
-//
-//                // Start screen recording
-//
-//
-//                // Optionally, after a delay, show the main window again
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                    AppDelegate.shared?.showMainWindow()
-//                }
+            }
+
+            Button("Start Recording area") {
+                AppDelegate.shared?.showOverlayWindow(captureType: .screenRecord, screenRecorder: screenRecorder)
             }
 
             Button("Stop Recording") {
@@ -50,8 +37,4 @@ struct ContentView: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

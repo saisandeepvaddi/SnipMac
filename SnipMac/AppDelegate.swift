@@ -7,10 +7,12 @@
 
 import AppKit
 import Cocoa
+import Combine
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate?
+
     var overlayWindow: NSWindow?
     var mainWindow: NSWindow?
 
@@ -23,9 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("AppDelegate is initialized.")
     }
 
-    func showOverlayWindow() {
+    func showOverlayWindow(captureType: CaptureType, screenRecorder: ScreenRecorder? = nil) {
         if overlayWindow == nil {
-            createOverlayWindow()
+            createOverlayWindow(captureType: captureType, screenRecorder: screenRecorder)
         }
         overlayWindow?.makeKeyAndOrderFront(nil)
     }
@@ -42,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindow?.makeKeyAndOrderFront(nil)
     }
 
-    private func createOverlayWindow() {
+    private func createOverlayWindow(captureType: CaptureType, screenRecorder: ScreenRecorder? = nil) {
         let screenRect = NSScreen.main?.frame ?? NSRect(x: 0, y: 0, width: 0, height: 0)
         overlayWindow = NSWindow(
             contentRect: screenRect,
@@ -53,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         overlayWindow?.level = .screenSaver
         overlayWindow?.ignoresMouseEvents = false
 
-        let contentView = OverlayView()
+        let contentView = ScreenshotOverlayView(captureType: captureType, screenRecorder: screenRecorder ?? ScreenRecorder())
         overlayWindow?.contentView = NSHostingView(rootView: contentView)
     }
 }

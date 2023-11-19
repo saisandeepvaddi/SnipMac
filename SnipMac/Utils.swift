@@ -16,3 +16,8 @@ func withMainWindowClosed(_ action: @escaping () -> Void) {
         }
     }
 }
+
+enum CaptureType {
+    case screenshot
+    case screenRecord
+}

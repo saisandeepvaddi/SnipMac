@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440D86012B098E17000D269D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D86002B098E17000D269D /* AppState.swift */; };
+		440D86032B0993C3000D269D /* ScreenRecordingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D86022B0993C3000D269D /* ScreenRecordingOverlayView.swift */; };
 		4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */; };
-		4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* OverlayView.swift */; };
+		4410A26B2AFF3DD800F1E606 /* ScreenshotOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* ScreenshotOverlayView.swift */; };
 		443807652B072A7C00462566 /* ScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443807642B072A7C00462566 /* ScreenRecorder.swift */; };
 		44579A8B2B008287001EE3D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44579A8A2B008287001EE3D0 /* Utils.swift */; };
 		449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449444762AFF4F9D0047DA0E /* AppDelegate.swift */; };
@@ -19,8 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440D86002B098E17000D269D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		440D86022B0993C3000D269D /* ScreenRecordingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecordingOverlayView.swift; sourceTree = "<group>"; };
 		4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureManager.swift; sourceTree = "<group>"; };
-		4410A26A2AFF3DD800F1E606 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		4410A26A2AFF3DD800F1E606 /* ScreenshotOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotOverlayView.swift; sourceTree = "<group>"; };
 		443807642B072A7C00462566 /* ScreenRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecorder.swift; sourceTree = "<group>"; };
 		44579A8A2B008287001EE3D0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		449444762AFF4F9D0047DA0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 		44F5CE822AFA03130099CE70 /* SnipMac */ = {
 			isa = PBXGroup;
 			children = (
+				440D86002B098E17000D269D /* AppState.swift */,
 				44F5CE942AFA11410099CE70 /* Info.plist */,
 				44F5CE832AFA03130099CE70 /* SnipMacApp.swift */,
 				44F5CE852AFA03130099CE70 /* ContentView.swift */,
@@ -70,7 +75,8 @@
 				44F5CE892AFA03140099CE70 /* SnipMac.entitlements */,
 				44F5CE8A2AFA03140099CE70 /* Preview Content */,
 				4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */,
-				4410A26A2AFF3DD800F1E606 /* OverlayView.swift */,
+				4410A26A2AFF3DD800F1E606 /* ScreenshotOverlayView.swift */,
+				440D86022B0993C3000D269D /* ScreenRecordingOverlayView.swift */,
 				449444762AFF4F9D0047DA0E /* AppDelegate.swift */,
 				44579A8A2B008287001EE3D0 /* Utils.swift */,
 				443807642B072A7C00462566 /* ScreenRecorder.swift */,
@@ -158,11 +164,13 @@
 			files = (
 				443807652B072A7C00462566 /* ScreenRecorder.swift in Sources */,
 				4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */,
-				4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */,
+				4410A26B2AFF3DD800F1E606 /* ScreenshotOverlayView.swift in Sources */,
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
 				449444772AFF4F9D0047DA0E /* AppDelegate.swift in Sources */,
 				44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */,
+				440D86032B0993C3000D269D /* ScreenRecordingOverlayView.swift in Sources */,
 				44579A8B2B008287001EE3D0 /* Utils.swift in Sources */,
+				440D86012B098E17000D269D /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
