@@ -33,7 +33,6 @@ struct ContentView: View {
             }
 
             Button("Stop Recording") {
-                // Stop screen recording
                 screenRecorder.stopRecording()
             }
         }

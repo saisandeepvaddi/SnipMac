@@ -30,6 +30,7 @@ class OverlayWindowManager {
 
     func hideOverlayWindow() {
         overlayWindow?.orderOut(nil)
+        overlayWindow = nil
     }
 
     func hideMainWindow() {
@@ -50,7 +51,7 @@ class OverlayWindowManager {
         overlayWindow?.backgroundColor = NSColor.clear
         overlayWindow?.level = .screenSaver
         overlayWindow?.ignoresMouseEvents = false
-
+        print("Creating new overlay")
         let contentView = ScreenshotOverlayView(captureType: captureType)
         overlayWindow?.contentView = NSHostingView(rootView: contentView)
     }
