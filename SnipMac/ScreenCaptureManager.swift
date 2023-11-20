@@ -71,6 +71,7 @@ class ScreenCaptureManager {
         do {
             try data.write(to: fileURL, options: .atomic)
             print("Screenshot saved to: \(fileURL.path())")
+            NSWorkspace.shared.open(fileURL)
         } catch {
             print("Failed to save screenshot: \(error)")
         }
