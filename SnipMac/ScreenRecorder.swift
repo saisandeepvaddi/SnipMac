@@ -16,6 +16,7 @@ class ScreenRecorder: NSObject {
     private var captureSession: AVCaptureSession?
     private var videoOutput: AVCaptureMovieFileOutput?
     private var screenInput: AVCaptureScreenInput?
+    private var microphone: AVCaptureDevice?
 
     override init() {
         super.init()
@@ -34,7 +35,6 @@ class ScreenRecorder: NSObject {
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = .high
         screenInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
-
         videoOutput = AVCaptureMovieFileOutput()
     }
 
@@ -52,6 +52,19 @@ class ScreenRecorder: NSObject {
         if captureSession.canAddInput(screenInput) {
             captureSession.addInput(screenInput)
         }
+
+        if let microphone = AVCaptureDevice.default(for: .audio) {
+            do {
+                let micInput = try AVCaptureDeviceInput(device: microphone)
+                if captureSession.canAddInput(micInput) {
+                    captureSession.addInput(micInput)
+                    print("added \(microphone)")
+                }
+            } catch {
+                print("Error adding microphone input: \(error)")
+            }
+        }
+
         // Add the movie file output
         if captureSession.canAddOutput(movieOutput) {
             captureSession.addOutput(movieOutput)

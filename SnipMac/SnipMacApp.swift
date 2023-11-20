@@ -9,17 +9,18 @@ import SwiftUI
 
 @main
 struct SnipMacApp: App {
-//    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-//    @StateObject var appState = AppState()
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var appState = AppState()
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environmentObject(appState)
-                .onAppear {
-                    OverlayWindowManager.shared.mainWindow = NSApplication.shared.windows.first
-                }
-        }
+//        WindowGroup {
+//            ContentView()
+//                .environmentObject(appState)
+//                .onAppear {
+//                    OverlayWindowManager.shared.mainWindow = NSApplication.shared.windows.first
+//                }
+//        }
+        Settings {}
     }
 }

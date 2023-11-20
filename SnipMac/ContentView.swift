@@ -14,27 +14,40 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button("Take Screenshot") {
-                withMainWindowClosed {
+//                withMainWindowClosed {
+//                    ScreenCaptureManager.takeScreenshot()
+//                }
+                withMenubarClosed {
                     ScreenCaptureManager.takeScreenshot()
                 }
             }
 
             Button("Capture Area") {
-                overlayWindowManager.hideMainWindow()
-                overlayWindowManager.showOverlayWindow(captureType: .screenshot)
+//                overlayWindowManager.hideMainWindow()
+//                overlayWindowManager.showOverlayWindow(captureType: .screenshot)
+                withMenubarClosed {
+                    overlayWindowManager.showOverlayWindow(captureType: .screenshot)
+                }
             }
 
             Button("Start Recording whole screen") {
-                screenRecorder.startRecordingMainScreen()
+//                screenRecorder.startRecordingMainScreen()
+                withMenubarClosed {
+                    screenRecorder.startRecordingMainScreen()
+                }
             }
 
             Button("Start Recording area") {
-                overlayWindowManager.showOverlayWindow(captureType: .screenRecord)
+                withMenubarClosed {
+                    overlayWindowManager.showOverlayWindow(captureType: .screenRecord)
+                }
             }
 
             Button("Stop Recording") {
-                screenRecorder.stopRecording()
+                withMenubarClosed {
+                    screenRecorder.stopRecording()
+                }
             }
-        }
+        }.padding()
     }
 }

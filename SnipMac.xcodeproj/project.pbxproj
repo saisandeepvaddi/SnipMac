@@ -14,6 +14,8 @@
 		4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* OverlayView.swift */; };
 		443807652B072A7C00462566 /* ScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443807642B072A7C00462566 /* ScreenRecorder.swift */; };
 		44579A8B2B008287001EE3D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44579A8A2B008287001EE3D0 /* Utils.swift */; };
+		44CFDDE22B0AF3BB0002ECAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */; };
+		44CFDDE42B0AF4F80002ECAB /* MenubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */; };
 		44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE832AFA03130099CE70 /* SnipMacApp.swift */; };
 		44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5CE852AFA03130099CE70 /* ContentView.swift */; };
 		44F5CE882AFA03140099CE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F5CE872AFA03140099CE70 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		4410A26A2AFF3DD800F1E606 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		443807642B072A7C00462566 /* ScreenRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecorder.swift; sourceTree = "<group>"; };
 		44579A8A2B008287001EE3D0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarView.swift; sourceTree = "<group>"; };
 		44F5CE802AFA03130099CE70 /* SnipMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnipMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F5CE832AFA03130099CE70 /* SnipMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnipMacApp.swift; sourceTree = "<group>"; };
 		44F5CE852AFA03130099CE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				44579A8A2B008287001EE3D0 /* Utils.swift */,
 				443807642B072A7C00462566 /* ScreenRecorder.swift */,
 				440D86042B09A0EF000D269D /* OverlayWindowManager.swift */,
+				44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */,
+				44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */,
 			);
 			path = SnipMac;
 			sourceTree = "<group>";
@@ -163,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				443807652B072A7C00462566 /* ScreenRecorder.swift in Sources */,
+				44CFDDE42B0AF4F80002ECAB /* MenubarView.swift in Sources */,
 				4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */,
 				4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */,
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
@@ -170,6 +177,7 @@
 				440D86052B09A0EF000D269D /* OverlayWindowManager.swift in Sources */,
 				440D86032B0993C3000D269D /* ScreenRecordingOverlayView.swift in Sources */,
 				44579A8B2B008287001EE3D0 /* Utils.swift in Sources */,
+				44CFDDE22B0AF3BB0002ECAB /* AppDelegate.swift in Sources */,
 				440D86012B098E17000D269D /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +314,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SnipMac/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need audio permissions for recording audio for your screen recordings";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -347,7 +357,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SnipMac/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need audio permissions for recording audio for your screen recordings";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

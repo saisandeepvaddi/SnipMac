@@ -19,6 +19,14 @@ func withMainWindowClosed(_ action: @escaping () -> Void) {
     }
 }
 
+func withMenubarClosed(_ action: @escaping () -> Void) {
+    NotificationCenter.default.post(name: .closePopover, object: nil)
+
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        action()
+    }
+}
+
 func calculateCropRect(from selectedRect: CGRect) -> CGRect {
     guard let screen = NSScreen.main else { return CGRect.zero }
     let scaleFactor = screen.backingScaleFactor
