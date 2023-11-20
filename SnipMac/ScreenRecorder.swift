@@ -2,33 +2,61 @@
 //  ScreenRecorder.swift
 //  SnipMac
 //
-//  Created by Sai Sandeep Vaddi on 11/16/23.
+//  Created by Sai Sandeep Vaddi on 11/19/23.
 //
 
 import AVFoundation
 import Foundation
+import ScreenCaptureKit
 
-class ScreenRecorder: NSObject {
-    static let shared = ScreenRecorder()
-    let overlayWindowManager = OverlayWindowManager.shared
+class ScreenRecorder {
+    var isRunning = false
+    // 1. Content Filter
+    private(set) var availableDisplays = [SCDisplay]()
+    private(set) var availableWindows = [SCWindow]()
+    private var availableApps = [SCRunningApplication]()
+    
+    private let assetWriter: AVAssetWriter?
+    
+    var selectedDisplay: SCDisplay?
+    
+    var selectedWindow: SCWindow?
+    private var scaleFactor: Int { Int(NSScreen.main?.backingScaleFactor ?? 2) }
 
-    private var captureSession: AVCaptureSession?
-    private var videoOutput: AVCaptureMovieFileOutput?
-    private var screenInput: AVCaptureScreenInput?
-
-//    private var destinationURL: URL
-
-    override init() {
-//        let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
-//        let timestamp = dateFormatter.string(from: Date())
-//        let filename = "SnipMacScreenRecording \(timestamp).mp4"
-//        destinationURL = desktopURL.appendingPathComponent(filename)
-        super.init()
-//        setupCaptureSession()
+    private func filterWindows(_ windows: [SCWindow]) -> [SCWindow] {
+        windows
+            // Sort the windows by app name.
+            .sorted { $0.owningApplication?.applicationName ?? "" < $1.owningApplication?.applicationName ?? "" }
+            // Remove windows that don't have an associated .app bundle.
+            .filter { $0.owningApplication != nil && $0.owningApplication?.applicationName != "" }
+            // Remove this app's window from the list.
+            .filter { $0.owningApplication?.bundleIdentifier != Bundle.main.bundleIdentifier }
     }
 
+    private func getAvailableContent() async {
+        do {
+            // Retrieve the available screen content to capture.
+            let availableContent = try await SCShareableContent.excludingDesktopWindows(false,
+                                                                                        onScreenWindowsOnly: true)
+            availableDisplays = availableContent.displays
+
+            let windows = filterWindows(availableContent.windows)
+            if windows != availableWindows {
+                availableWindows = windows
+            }
+            availableApps = availableContent.applications
+
+            if selectedDisplay == nil {
+                selectedDisplay = availableDisplays.first
+            }
+            if selectedWindow == nil {
+                selectedWindow = availableWindows.first
+            }
+        } catch {
+            print("Failed to get the shareable content: \(error.localizedDescription)")
+        }
+    }
+    
     func getNewOutputFileURL() -> URL {
         let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
         let dateFormatter = DateFormatter()
@@ -38,71 +66,54 @@ class ScreenRecorder: NSObject {
         return desktopURL.appendingPathComponent(filename)
     }
 
-    func setupCaptureSession() {
-        captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = .high
-        screenInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
-
-        videoOutput = AVCaptureMovieFileOutput()
+    // 2. Create Stream Config
+    
+    private var streamConfiguration: SCStreamConfiguration {
+        let streamConfig = SCStreamConfiguration()
+        
+        // Configure audio capture.
+        streamConfig.capturesAudio = false
+        streamConfig.excludesCurrentProcessAudio = true
+        
+        // Configure the display content width and height.
+        if let display = selectedDisplay {
+            streamConfig.width = display.width * scaleFactor
+            streamConfig.height = display.height * scaleFactor
+        }
+        
+        // Configure the window content width and height.
+        if let window = selectedWindow {
+            streamConfig.width = Int(window.frame.width) * 2
+            streamConfig.height = Int(window.frame.height) * 2
+        }
+        
+        // Set the capture interval at 60 fps.
+        streamConfig.minimumFrameInterval = CMTime(value: 1, timescale: 60)
+        
+        // Increase the depth of the frame queue to ensure high fps at the expense of increasing
+        // the memory footprint of WindowServer.
+        streamConfig.queueDepth = 5
+        
+        return streamConfig
     }
 
-    func startRecordingMainScreen() {
-        startRecording(of: CGDisplayBounds(CGMainDisplayID()))
+    // 3. Start Capture Session
+    func startRecordingMainScreen() async {
+        await startRecording()
     }
-
-    func startRecording(of area: CGRect?) {
-        setupCaptureSession()
-        print("Started")
-        guard let captureSession = captureSession, let movieOutput = videoOutput, let input = screenInput else { return }
-
-        if area != nil {
-            input.cropRect = area ?? CGDisplayBounds(CGMainDisplayID())
+    
+    func startRecording() async {
+        guard CGPreflightScreenCaptureAccess() else {
+            print("No screen capture permissions")
         }
-
-        if captureSession.canAddInput(input) {
-            captureSession.addInput(input)
-        }
-        // Add the movie file output
-        if captureSession.canAddOutput(movieOutput) {
-            captureSession.addOutput(movieOutput)
-        }
-
-        // Start the session
-        captureSession.startRunning()
-
-        // Start recording to a file
-        movieOutput.startRecording(to: getNewOutputFileURL(), recordingDelegate: self)
+        
+        guard !isRunning else { return }
     }
-
+    
     func stopRecording() {
-        videoOutput?.stopRecording()
-        captureSession?.stopRunning()
-        captureSession = nil
-        videoOutput = nil
-        print("Stopping recording")
-        if (overlayWindowManager.overlayWindow) != nil {
-            overlayWindowManager.hideOverlayWindow()
-        }
+        guard isRunning else { return }
     }
-}
-
-extension ScreenRecorder: AVCaptureFileOutputRecordingDelegate {
-    func fileOutput(_ output: AVCaptureFileOutput,
-                    didStartRecordingTo fileURL: URL,
-                    from connections: [AVCaptureConnection])
-    {
-        print("Recording started")
-    }
-
-    func fileOutput(_ output: AVCaptureFileOutput,
-                    didFinishRecordingTo outputFileURL: URL,
-                    from connections: [AVCaptureConnection],
-                    error: Error?)
-    {
-        if let error = error {
-            print("Recording error: \(error)")
-        }
-        // Handle completion of recording
-        print("Recording finished: \(outputFileURL.path)")
-    }
+    // 4. Process the Output
+    // 5. Process a video sample buffer
+    // 6. Process an audio sample buffer
 }
