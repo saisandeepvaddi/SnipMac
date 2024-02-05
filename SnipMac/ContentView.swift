@@ -12,26 +12,20 @@ struct ContentView: View {
     let screenRecorder = ScreenRecorder.shared
     let overlayWindowManager = OverlayWindowManager.shared
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Button("Take Screenshot") {
-//                withMainWindowClosed {
-//                    ScreenCaptureManager.takeScreenshot()
-//                }
                 withMenubarClosed {
                     ScreenCaptureManager.takeScreenshot()
                 }
             }
 
             Button("Capture Area") {
-//                overlayWindowManager.hideMainWindow()
-//                overlayWindowManager.showOverlayWindow(captureType: .screenshot)
                 withMenubarClosed {
                     overlayWindowManager.showOverlayWindow(captureType: .screenshot)
                 }
             }
 
             Button("Start Recording whole screen") {
-//                screenRecorder.startRecordingMainScreen()
                 withMenubarClosed {
                     screenRecorder.startRecordingMainScreen()
                 }
@@ -48,6 +42,7 @@ struct ContentView: View {
                     screenRecorder.stopRecording()
                 }
             }
+
         }.padding()
     }
 }
