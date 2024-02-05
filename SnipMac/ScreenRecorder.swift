@@ -35,6 +35,8 @@ class ScreenRecorder: NSObject {
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = .high
         screenInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
+        screenInput?.scaleFactor = 1.0
+        screenInput?.minFrameDuration = CMTimeMake(value: 1, timescale: 60)
         videoOutput = AVCaptureMovieFileOutput()
     }
 
