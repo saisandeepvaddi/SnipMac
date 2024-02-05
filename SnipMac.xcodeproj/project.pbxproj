@@ -13,6 +13,7 @@
 		4410A2692AFF334400F1E606 /* ScreenCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */; };
 		4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410A26A2AFF3DD800F1E606 /* OverlayView.swift */; };
 		443807652B072A7C00462566 /* ScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443807642B072A7C00462566 /* ScreenRecorder.swift */; };
+		44514E112B7092BE005FAB0E /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44514E102B7092BE005FAB0E /* AppMenu.swift */; };
 		44579A8B2B008287001EE3D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44579A8A2B008287001EE3D0 /* Utils.swift */; };
 		44CFDDE22B0AF3BB0002ECAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */; };
 		44CFDDE42B0AF4F80002ECAB /* MenubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */; };
@@ -29,6 +30,7 @@
 		4410A2682AFF334400F1E606 /* ScreenCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureManager.swift; sourceTree = "<group>"; };
 		4410A26A2AFF3DD800F1E606 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		443807642B072A7C00462566 /* ScreenRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecorder.swift; sourceTree = "<group>"; };
+		44514E102B7092BE005FAB0E /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		44579A8A2B008287001EE3D0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				440D86042B09A0EF000D269D /* OverlayWindowManager.swift */,
 				44CFDDE12B0AF3BB0002ECAB /* AppDelegate.swift */,
 				44CFDDE32B0AF4F80002ECAB /* MenubarView.swift */,
+				44514E102B7092BE005FAB0E /* AppMenu.swift */,
 			);
 			path = SnipMac;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				4410A26B2AFF3DD800F1E606 /* OverlayView.swift in Sources */,
 				44F5CE862AFA03130099CE70 /* ContentView.swift in Sources */,
 				44F5CE842AFA03130099CE70 /* SnipMacApp.swift in Sources */,
+				44514E112B7092BE005FAB0E /* AppMenu.swift in Sources */,
 				440D86052B09A0EF000D269D /* OverlayWindowManager.swift in Sources */,
 				440D86032B0993C3000D269D /* ScreenRecordingOverlayView.swift in Sources */,
 				44579A8B2B008287001EE3D0 /* Utils.swift in Sources */,

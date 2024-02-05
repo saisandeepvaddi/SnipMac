@@ -35,15 +35,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusButton.action = #selector(togglePopover)
         }
 
-        let popover = MenubarPopover()
-        popover.contentSize = NSSize(width: 300, height: 600)
-        popover.behavior = .transient
-        popover.contentViewController = NSHostingController(rootView: ContentView())
-        self.popover = popover
-        eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] _ in
-            if let popover = self?.popover, popover.isShown {
-                self?.closePopover()
-            }
+//        let popover = MenubarPopover()
+//        popover.contentSize = NSSize(width: 300, height: 600)
+//        popover.behavior = .transient
+//        popover.contentViewController = NSHostingController(rootView: ContentView())
+//        self.popover = popover
+//        eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] _ in
+//            if let popover = self?.popover, popover.isShown {
+//                self?.closePopover()
+//            }
+//        }
+        if let statusItem = statusItem {
+            statusItem.menu = AppMenu()
         }
     }
 
