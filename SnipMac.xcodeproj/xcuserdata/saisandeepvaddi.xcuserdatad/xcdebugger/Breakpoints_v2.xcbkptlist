@@ -20,5 +20,219 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenRecorder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136">
+            <Locations>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - e27b0e9e88e896be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in SnipMac.ScreenRecorder.stopRecording() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - e27b0e9e88e896be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in SnipMac.ScreenRecorder.stopRecording() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672e77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672e77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672e10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672e10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672fbd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136">
+               </Location>
+               <Location
+                  uuid = "84669E0A-78A8-4AE6-9B87-4F7FAD527787 - 742a595b1d672f5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1323643-B94A-4D02-B479-9B88AB1A5AFB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenRecorder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151">
+            <Locations>
+               <Location
+                  uuid = "C1323643-B94A-4D02-B479-9B88AB1A5AFB - e27b0e9e88e89145"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in SnipMac.ScreenRecorder.stopRecording() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151">
+               </Location>
+               <Location
+                  uuid = "C1323643-B94A-4D02-B479-9B88AB1A5AFB - e27b0e9e88e89145"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in SnipMac.ScreenRecorder.stopRecording() -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151">
+               </Location>
+               <Location
+                  uuid = "C1323643-B94A-4D02-B479-9B88AB1A5AFB - 742a595b1d67298c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SnipMac.ScreenRecorder.startRecording(of: __C.CGRect) -&gt; ()"
+                  moduleName = "SnipMac"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/saisandeepvaddi/Programming/SnipMac/SnipMac/ScreenRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77EC9782-E8C9-462E-87A2-F687C6EDB83A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenRecorder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39C54FD8-0C3E-4528-B14B-56B38FF40380"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnipMac/ScreenRecorder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
