@@ -1,48 +1,82 @@
-//
-//  ContentView.swift
-//  SnipMac
-//
-//  Created by Sai Sandeep Vaddi on 11/6/23.
-//
-
-import Foundation
+import AppKit
 import SwiftUI
 
 struct ContentView: View {
-    let screenRecorder = ScreenRecorder.shared
-    let overlayWindowManager = OverlayWindowManager.shared
+    @AppStorage("includesMicrophone") private var includesMicrophone = false
+    @AppStorage("recordingCountdown") private var recordingCountdown = 3
+    @AppStorage("captureDirectory") private var captureDirectory = ""
+
     var body: some View {
-        VStack(alignment: .leading) {
-            Button("Take Screenshot") {
-                withMenubarClosed {
-                    ScreenCaptureManager.takeScreenshot()
+        Form {
+            Section("Captures") {
+                LabeledContent("Save to") {
+                    HStack {
+                        Text(displayedCaptureDirectory)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                        Button("Choose…", action: chooseCaptureDirectory)
+                    }
                 }
+                LabeledContent("Screenshots", value: "PNG · autosave + clipboard")
+                LabeledContent("Recordings", value: "MP4 · autosave")
             }
 
-            Button("Capture Area") {
-                withMenubarClosed {
-                    overlayWindowManager.showOverlayWindow(captureType: .screenshot)
+            Section("Recording") {
+                Toggle("Include microphone audio", isOn: $includesMicrophone)
+                Picker("Countdown", selection: $recordingCountdown) {
+                    Text("None").tag(0)
+                    Text("3 seconds").tag(3)
+                    Text("5 seconds").tag(5)
                 }
+                Text("Microphone permission is requested only when this option is enabled and a recording starts.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
-            Button("Start Recording whole screen") {
-                withMenubarClosed {
-                    screenRecorder.startRecordingMainScreen()
-                }
+            Section("Global Shortcuts") {
+                shortcutRow("Capture Display", action: .displayScreenshot)
+                shortcutRow("Capture Region", action: .regionScreenshot)
+                shortcutRow("Capture Window", action: .windowScreenshot)
+                shortcutRow("Record Display", action: .displayRecording)
+                shortcutRow("Record Region", action: .regionRecording)
             }
 
-            Button("Start Recording area") {
-                withMenubarClosed {
-                    overlayWindowManager.showOverlayWindow(captureType: .screenRecord)
+            Section("Permissions") {
+                HStack {
+                    Button("Screen Recording Settings") {
+                        NSWorkspace.shared.open(.screenRecordingSettings)
+                    }
+                    Button("Microphone Settings") {
+                        NSWorkspace.shared.open(.microphoneSettings)
+                    }
                 }
             }
+        }
+        .formStyle(.grouped)
+        .frame(width: 520, height: 460)
+    }
 
-            Button("Stop Recording") {
-                withMenubarClosed {
-                    screenRecorder.stopRecording()
-                }
-            }
+    private var displayedCaptureDirectory: String {
+        captureDirectory.isEmpty ? "Pictures/SnipMac" : captureDirectory
+    }
 
-        }.padding()
+    private func shortcutRow(_ title: String, action: GlobalShortcutManager.Action) -> some View {
+        LabeledContent(title) {
+            Text(action.displayName)
+                .font(.system(.body, design: .monospaced))
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    private func chooseCaptureDirectory() {
+        let panel = NSOpenPanel()
+        panel.message = "Choose where SnipMac saves captures"
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.canCreateDirectories = true
+        panel.allowsMultipleSelection = false
+        if panel.runModal() == .OK, let url = panel.url {
+            captureDirectory = url.path
+        }
     }
 }

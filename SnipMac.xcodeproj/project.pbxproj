@@ -319,8 +319,7 @@
 				INFOPLIST_FILE = SnipMac/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need audio permissions for recording audio for your screen recordings";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SnipMac uses the microphone only when you enable microphone audio for a screen recording.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -362,8 +361,7 @@
 				INFOPLIST_FILE = SnipMac/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires screen recording access to capture screenshots.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need audio permissions for recording audio for your screen recordings";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SnipMac uses the microphone only when you enable microphone audio for a screen recording.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

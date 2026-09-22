@@ -1,99 +1,149 @@
-//
-//  AppMenu.swift
-//  SnipMac
-//
-//  Created by Sai Sandeep Vaddi on 2/4/24.
-//
+import AppKit
 
-import Cocoa
-
-class AppMenu: NSMenu {
-    let screenRecorder = ScreenRecorder.shared
-    let overlayWindowManager = OverlayWindowManager.shared
+@MainActor
+final class AppMenu: NSMenu {
+    private let screenRecorder = ScreenRecorder.shared
+    private let overlayWindowManager = OverlayWindowManager.shared
 
     override init(title: String) {
         super.init(title: title)
-        self.addMenuItems()
+        autoenablesItems = false
+        rebuild()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(recordingStateChanged),
+            name: .recordingStateChanged,
+            object: nil
+        )
     }
 
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 
-    private func addMenuItems() {
-        self.addStyledMenuItem(title: "Take Screenshot", action: #selector(self.takeScreenshot), keyEquivalent: "", systemIconName: "rectangle.dashed")
-
-        self.addStyledMenuItem(title: "Capture Area", action: #selector(self.captureArea), keyEquivalent: "", systemIconName: "rectangle.inset.filled")
-
-        self.addItem(NSMenuItem.separator())
-
-        self.addStyledMenuItem(title: "Start Recording whole screen", action: #selector(self.startRecordingWholeScreen), keyEquivalent: "", systemIconName: "record.circle")
-
-        self.addStyledMenuItem(title: "Start Recording area", action: #selector(self.startRecordingArea), keyEquivalent: "", systemIconName: "rectangle.dashed.badge.record")
-
-        self.addStyledMenuItem(title: "Stop Recording", action: #selector(self.stopRecording), keyEquivalent: "", systemIconName: "stop.circle")
-
-        self.addItem(NSMenuItem.separator())
-
-        self.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
-    @objc func takeScreenshot() {
-        withMenubarClosed {
-            ScreenCaptureManager.takeScreenshot()
-        }
+    func rebuild() {
+        removeAllItems()
+
+        addSectionHeader("Screenshot")
+        addAction(
+            "Capture Display",
+            symbol: "display",
+            shortcut: .displayScreenshot,
+            selector: #selector(captureDisplay)
+        )
+        addAction(
+            "Capture Region…",
+            symbol: "rectangle.dashed",
+            shortcut: .regionScreenshot,
+            selector: #selector(captureRegion)
+        )
+        addAction(
+            "Capture Window…",
+            symbol: "macwindow",
+            shortcut: .windowScreenshot,
+            selector: #selector(captureWindow)
+        )
+
+        addItem(.separator())
+        addSectionHeader("Screen Recording")
+        addAction(
+            "Record Display",
+            symbol: "record.circle",
+            shortcut: .displayRecording,
+            selector: #selector(recordDisplay),
+            enabled: !screenRecorder.isActive
+        )
+        addAction(
+            "Record Region…",
+            symbol: "rectangle.dashed.badge.record",
+            shortcut: .regionRecording,
+            selector: #selector(recordRegion),
+            enabled: !screenRecorder.isActive
+        )
+        addAction(
+            "Stop Recording",
+            symbol: "stop.circle.fill",
+            selector: #selector(stopRecording),
+            enabled: screenRecorder.isActive
+        )
+
+        addItem(.separator())
+        addAction("Settings…", symbol: "gearshape", selector: #selector(showSettings))
+        addAction("Show Captures", symbol: "folder", selector: #selector(showCaptures))
+        addItem(.separator())
+
+        let quit = NSMenuItem(title: "Quit SnipMac", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        addItem(quit)
     }
 
-    @objc func captureArea() {
-        withMenubarClosed {
-            self.overlayWindowManager.showOverlayWindow(captureType: .screenshot)
-        }
+    @objc private func captureDisplay() {
+        afterMenuCloses { ScreenCaptureManager.shared.captureDisplay() }
     }
 
-    @objc func startRecordingWholeScreen() {
-        withMenubarClosed {
-            self.screenRecorder.startRecordingMainScreen()
-        }
+    @objc private func captureRegion() {
+        afterMenuCloses { self.overlayWindowManager.showRegionSelector(for: .screenshot) }
     }
 
-    @objc func startRecordingArea() {
-        withMenubarClosed {
-            self.overlayWindowManager.showOverlayWindow(captureType: .screenRecord)
-        }
+    @objc private func captureWindow() {
+        afterMenuCloses { self.overlayWindowManager.showWindowSelector() }
     }
 
-    @objc func stopRecording() {
-        withMenubarClosed {
-            self.screenRecorder.stopRecording()
-        }
+    @objc private func recordDisplay() {
+        afterMenuCloses { self.screenRecorder.startRecordingDisplayUnderPointer() }
+    }
+
+    @objc private func recordRegion() {
+        afterMenuCloses { self.overlayWindowManager.showRegionSelector(for: .screenRecording) }
+    }
+
+    @objc private func stopRecording() {
+        screenRecorder.stopRecording()
+    }
+
+    @objc private func showSettings() {
+        NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc private func showCaptures() {
+        NSWorkspace.shared.open(CaptureStore.shared.captureDirectory)
+    }
+
+    @objc private func recordingStateChanged() {
+        rebuild()
+    }
+
+    private func afterMenuCloses(_ action: @escaping @MainActor () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) { action() }
+    }
+
+    private func addSectionHeader(_ title: String) {
+        let item = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+        item.isEnabled = false
+        addItem(item)
+    }
+
+    private func addAction(
+        _ title: String,
+        symbol: String,
+        shortcut: GlobalShortcutManager.Action? = nil,
+        selector: Selector,
+        enabled: Bool = true
+    ) {
+        let visibleTitle = shortcut.map { "\(title)    \($0.displayName)" } ?? title
+        let item = NSMenuItem(title: visibleTitle, action: selector, keyEquivalent: "")
+        item.target = self
+        item.isEnabled = enabled
+        item.image = NSImage(systemSymbolName: symbol, accessibilityDescription: title)
+        item.image?.isTemplate = true
+        addItem(item)
     }
 }
 
-extension AppMenu {
-    func menuItem(title: String, action: Selector?, keyEquivalent: String) -> NSMenuItem {
-        let menuItem = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
-        menuItem.target = self
-        return menuItem
-    }
-}
-
-extension NSMenu {
-    func addStyledMenuItem(title: String, action: Selector?, keyEquivalent: String, systemIconName: String? = nil) {
-        let menuItem = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
-        menuItem.target = self
-
-        if let systemIconName = systemIconName {
-            if #available(macOS 11.0, *) {
-                let config = NSImage.SymbolConfiguration(scale: .large) // You can choose .default, .small, .medium, or .large
-                menuItem.image = NSImage(systemSymbolName: systemIconName, accessibilityDescription: nil)?.withSymbolConfiguration(config)
-                menuItem.image?.isTemplate = true // Ensure the icon adapts to light/dark mode
-            } else {
-                // Fallback on earlier versions or handle the error
-            }
-        }
-
-        // Add more styling if needed
-
-        self.addItem(menuItem)
-    }
+extension Notification.Name {
+    static let recordingStateChanged = Notification.Name("SnipMacRecordingStateChanged")
 }

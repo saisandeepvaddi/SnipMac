@@ -5,9 +5,5 @@
 //  Created by Sai Sandeep Vaddi on 11/18/23.
 //
 
-import Foundation
-
-class AppState: ObservableObject {
-    @Published var showOverlay = false
-    @Published var recorder: ScreenRecorder = .init()
-}
+// Application state is owned by the focused capture services rather than a
+// second, disconnected recorder instance.
